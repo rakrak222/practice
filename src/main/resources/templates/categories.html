@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Categories</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="mb-4">Categories</h2>
+  <div th:each="category : ${categories}">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h3 th:text="${category.name}" class="card-title"></h3>
+        <p th:text="${category.description}" class="card-text"></p>
+        <a th:href="@{/categories/edit/{id}(id=${category.id})}" class="btn btn-secondary">Edit</a>
+        <form th:action="@{/categories/delete/{id}(id=${category.id})}" method="post" class="d-inline">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <a th:href="@{/categories/new}" class="btn btn-primary">Create New Category</a>
+</div>
+</body>
+</html>

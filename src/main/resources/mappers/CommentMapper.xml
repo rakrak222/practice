@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baek.blog.mapper.CommentMapper">
+
+    <select id="findById" parameterType="Long" resultType="com.baek.blog.entity.Comment">
+        SELECT * FROM comments WHERE id = #{id}
+    </select>
+
+    <select id="findByPostId" parameterType="Long" resultType="com.baek.blog.entity.Comment">
+        SELECT * FROM comments WHERE post_id = #{postId} ORDER BY created_at DESC
+    </select>
+
+    <insert id="insertComment" parameterType="com.baek.blog.entity.Comment">
+        INSERT INTO comments (post_id, user_id, content, created_at)
+        VALUES (#{postId}, #{userId}, #{content}, #{createdAt})
+    </insert>
+
+    <update id="updateComment" parameterType="com.baek.blog.entity.Comment">
+        UPDATE comments
+        SET content = #{content}, updated_at = #{updatedAt}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteComment" parameterType="Long">
+        DELETE FROM comments WHERE id = #{id}
+    </delete>
+
+</mapper>

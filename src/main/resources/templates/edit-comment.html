@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Comment</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="mb-4">Edit Comment</h2>
+  <form th:action="@{/comments/edit/{id}(id=${comment.id})}" method="post">
+    <div class="form-group">
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" class="form-control" rows="5" th:text="${comment.content}"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+</body>
+</html>
