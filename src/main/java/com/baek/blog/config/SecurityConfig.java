@@ -22,7 +22,7 @@ public class SecurityConfig {
                 )
                 .formLogin(formLogin ->
                         formLogin
-                                .loginPage("/login")
+//                                .loginPage("/login")
                                 .defaultSuccessUrl("/")  // 로그인 후 홈으로 리다이렉트
                                 .permitAll()
                 )
